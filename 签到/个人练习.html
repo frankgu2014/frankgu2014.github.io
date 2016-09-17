@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>签到个人练习</title>
+	<link rel="stylesheet" type="text/css" href="个人练习.css">
+</head>
+<body>
+	<div class="container">
+		<div class="con-box">
+			<div class="banner">
+			</div>
+			<div class="content">
+				<div class="qd-span">
+					<span class="qd-time" id="qd-time">2016年9月15日</span>
+					<span class="qd-mine">我的签到</span>					
+				</div>
+				<div class="qd-main">
+					<ul class="qd-list" id="qd-list"></ul>
+				</div>
+				<div class="qd-right">
+					<div class="qd-right-top">
+						<div id="qdBtn"></div>
+						今日已领0.1元，请明日继续签到
+					</div>
+					<div class="qd-right-bottom">
+						<h4>签到规则</h4>
+						<p>首次签到获得0.05元现金奖励<br>连续签到每天增加0.01元现金奖励<br>连续签到16天及以上每天获得0.2元现金奖励</p>
+						<h4>其他说明</h4>
+						<p>如果中间有一天间断未签到的，重先开始计算连续签到时间。<br>
+						连续签到获得奖励后分享到QQ空间、微信朋友圈后再获得一次奖励，每天只限分享一次。<br>
+						获得的奖励不能直接提现，只能投资后转让变现。</p>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 我的签到 layer start 弹出层-->
+    <div class="qd-layer qd-history-layer">
+        <div class="qd-layer-con qd-radius">
+            <a href="javascript:;" class="close-qd-layer qd-sprits"></a>
+            <!-- 弹出层的顶部ul列表 -->
+            <ul class="qd-history-inf clear">
+                <li>
+                    <p>连续签到</p>
+                    <h4>5</h4>
+                </li>
+                <li>
+                    <p>本月签到</p>
+                    <h4>17</h4>
+                </li>
+                <li>
+                    <p>总共签到数</p>
+                    <h4>28</h4>
+                </li>
+                <li>
+                    <p>签到累计奖励</p>
+                    <h4>30</h4>
+                </li>
+            </ul>
+            <!-- 已经签到的记录 -->
+            <div class="qd-history-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>签到日期</th>
+                            <th>奖励</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <table>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>分享奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                        <tr>
+                            <td>2016-1-6 14:23:45</td>
+                            <td>0.20</td>
+                            <td>连续签到19天奖励</td>
+                        </tr>
+                    </table>
+                </table>
+            </div>
+        </div>
+        <!-- 弹出层的背景蒙版 -->
+        <div class="qd-layer-bg"></div>
+    </div>
+    <!-- 我的签到 layer end -->
+    <!-- 签到+分享 layer start -->
+    <div class="qd-layer qd-active">
+        <div class="qd-layer-con qd-radius">
+            <a href="javascript:;" class="close-qd-layer qd-sprits"></a>
+            <div class="yiqd clearfix">
+                <div class="yiqd-icon qd-sprits"></div>您已连续签到<span>2</span>天
+            </div>
+            <div class="qd-jiangli qd-sprits">
+                <span class="qd-jiangli-num">0.55<em>元</em></span>
+            </div>
+            <a href="#" class="qd-share qd-tran">分享获取双倍收益</a>
+        </div>
+        <div class="qd-layer-bg"></div>
+    </div>
+    <!-- 签到+分享 layer end -->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="个人练习.js"></script>
+</body>
+</html>

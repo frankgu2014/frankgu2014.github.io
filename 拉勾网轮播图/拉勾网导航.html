@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; } 
+		.clearfix { *zoom:1; } 
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul {
+			list-style-type: none;
+		}
+		a {
+			text-decoration: none;
+		}
+		.container {
+			width: 750px;
+			margin: 100px auto; 
+			overflow: hidden;
+			height: 160px;
+		}
+		.content{
+			float: left;
+
+		}
+		.content li+li {
+			margin-top: -3px;
+		}
+		.control {
+			float: right;
+    		width: 121px;
+    		height: 160px;
+    		position: relative;
+    		right: 0;
+    		top: 0;
+		}
+		.control li {
+			width: 113px;
+			height: 42px;
+			border: 4px solid #ccc;
+			position: relative;
+		}
+		.control li+li {
+			margin-top: 5px;
+		}
+		.control span {
+			background: url(image/control_current.png) no-repeat;
+			width:137px;
+			height: 50px;
+			position: absolute;
+			z-index: 1;
+			left: -6px;
+		}
+		#bg-1 {
+			transition:all 0.2s;
+		}
+		#content {
+			transition:all 0.2s;
+		}
+		.banner {
+			width: 750px;
+			top: 275px;
+			left: 50%;
+			margin-left: -375px;
+			position: absolute;
+			height: 113px;
+			overflow: hidden;
+		}
+		.banner li{
+			float: left;
+			border: 1px solid #e8e8e8;
+		}
+		.banner li+li {
+			margin-left: 12px;
+		}
+		.hot-info {
+			width: 113px;
+			height: 113px;
+			color: #fff;
+			background-color: rgb(25,186,149);
+			opacity: 0.8;
+			transition: all 0.3s;
+		}
+		.hot-info h2{
+			padding-top: 10px;
+			text-align: center;
+		}
+		.hot-info em {
+			display: block;
+			width: 99px;
+			height: 5px;
+			background-color: rgb(94,207,181);
+			margin:4px 7px 10px;
+		}
+		.hot-info p{
+			line-height: 18px;
+			font-size: 12px;
+			margin: 6px 8px;
+		} 
+/*		.banner ul li:hover .hot-info {
+			margin-top:-116px;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="container clearfix">
+		<div class="content" id="content">
+			<ul>
+				<li><img src="image/1.png" alt=""></li>
+				<li><img src="image/2.png" alt=""></li>
+				<li><img src="image/3.jpg" alt=""></li>
+			</ul>
+		</div>
+		<div class="control" id="control">
+			<span id="bg-1"></span>
+			<ul>
+				<li><img src="image/control1.png" alt=""></li>
+				<li><img src="image/control2.png" alt=""></li>
+				<li><img src="image/control3.png" alt=""></li>
+			</ul>
+		</div>
+	</div>
+	<div class="banner clearfix" id="banner">
+		<ul class="clearfix" id="banner-list">
+			<li><a href="#"><img src="image/intro1.jpg" width="113px" height="113px" alt="">
+				<div class="hot-info">
+					<h2>婚礼纪</h2>
+					<em></em>
+					<p>一站式婚礼电商服务平台</p>
+				</div>
+			</a></li>
+			<li><a href="#"><img src="image/intro2.png" width="113px" height="113px" alt="">
+				<div class="hot-info">
+					<h2>丽子美妆</h2>
+					<em></em>
+					<p>由麻省理工博士创办，专注于售卖化妆品一百年</p>
+				</div>
+			</a></li>
+			<li><a href="#"><img src="image/intro3.png" width="113px" height="113px" alt="">
+				<div class="hot-info">
+					<h2>端点科技</h2>
+					<em></em>
+					<p>做最好的软件公司，盈利，高成长空间，专注技术</p>
+				</div>
+			</a></li>
+			<li><a href="#"><img src="image/intro4.png" width="113px" height="113px" alt="">
+				<div class="hot-info">
+					<h2>来存吧</h2>
+					<em></em>
+					<p>专注银行票据理财</p>
+				</div>
+			</a></li>
+			<li><a href="#"><img src="image/intro5.jpg" width="113px" height="113px" alt="">
+				<div class="hot-info">
+					<h2>任润科技</h2>
+					<em></em>
+					<p>高端互联网金融平台构架服务商</p>
+				</div>
+			</a></li>
+			<li><a href="#"><img src="image/intro6.jpg" width="113px" height="113px" alt="">
+				<div class="hot-info">
+					<h2>淘维科技</h2>
+					<em></em>
+					<p>一款服务上万商户的产品</p>
+				</div>
+			</a></li>
+		</ul>
+	</div>
+	<script src="jquery-3.1.0.min.js"></script>
+<script>
+
+</script>
+	<script src="拉勾轮播图.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>广告展示区</title>
+	<style>
+*{margin: 0;padding: 0;}
+li {list-style: none;}
+.box1{
+    width:100px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    top: 200px;
+    left: 300px;
+    float: left;
+    margin-right: 20px;
+}
+.box1 img {
+    width: 100px;
+    height: 100px
+}
+.box2{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(25,186,149);
+    position: absolute;
+    opacity: 0.7;
+}
+.box2 h2 {
+	text-align: center;
+}
+.box2 p {
+	text-align: center;
+	font-size: 14px;
+	margin-top: 10px;
+} 
+
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<ul>
+			<li class="box1"><img src="image/intro1.jpg" alt="">				
+				<div class="box2">
+					<h2>婚礼纪</h2>
+					<em></em>
+					<p>一站式婚礼电商服务平台</p>
+				</div>
+			</li>
+			<li class="box1"><img src="image/intro2.png" alt="">
+				<div class="box2">
+					<h2>丽子美妆</h2>
+					<em></em>
+					<p>由麻省理工博士创办，专注于售卖化妆品一百年</p>
+				</div>
+			</li>
+			<li class="box1"><img src="image/intro3.png" alt="">
+				<div class="box2">
+					<h2>端点科技</h2>
+					<em></em>
+					<p>做最好的软件公司，盈利，高成长空间，专注技术</p>
+				</div>
+			</li>
+			<li class="box1"><img src="image/intro4.png" alt="">
+				<div class="box2">
+					<h2>来存吧</h2>
+					<em></em>
+					<p>专注银行票据理财</p>
+				</div>
+			</li>
+			<li class="box1"><img src="image/intro5.jpg" alt="">
+				<div class="box2">
+					<h2>任润科技</h2>
+					<em></em>
+					<p>高端互联网金融平台构架服务商</p>
+				</div>
+			</li>
+			<li class="box1"><img src="image/intro6.jpg" alt="">
+				<div class="box2">
+					<h2>淘维科技</h2>
+					<em></em>
+					<p>一款服务上万商户的产品</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+<!-- 	<script src="jquery-3.1.0.min.js"></script>
+	<script>
+	$(function() {  
+    $(".box1").bind("mouseenter mouseleave",function(e) {  
+        var w = $(this).width();  
+        var h = $(this).height();  
+        var x=(e.pageX-this.offsetLeft-(w/2))*(w>h?(h/w):1);  
+        var y=(e.pageY-this.offsetTop-(h/2))*(h>w?(w/h):1);  
+        var direction=Math.round((((Math.atan2(y,x)*(180/Math.PI))+180)/90)+3)%4;  
+        var eventType = e.type;  
+        var position=[{left:0,top:-100},{left:100,top:0},{left:0,top:100},{left:-100,top:0}];  
+        if(eventType== 'mouseenter'){  
+            $(this).find(".box2").css(position[direction]).animate({left:0,top:0},2400);  
+            //这里要用this,如果用的是$(".box2")的话，会造成全部li都会在同时产生动画。
+        }else{  
+            $(this).find(".box2").animate(position[direction],400);  
+        }  
+    });  
+});    
+</script> -->
+<script>
+window.onload=function(){
+	var box1=document.getElementsByClassName('box1');
+		// var box2=document.getElementById('box2');
+		for(var i=0;i<box1.length;i++){
+		box1[i].onmouseenter=function(e){
+			var w=this.offsetWidth;
+			var h=this.offsetHeight;
+			var x=(e.pageX-this.offsetLeft-(w/2))*(w>h?(h/w):1);    
+			var y=(e.pageY-this.offsetTop-(h/2))*(h>w?(w/h):1);   
+			var direction=Math.round((((Math.atan2(y,x)*(180/Math.PI))+180)/90)+3)%4;
+			var position=["left:0px;top:-100px","left:100px;top:0px","left:0px;top:100px","left:-100px;top:0px"]; 
+			var ttt=this.getElementsByClassName('box2')[0];
+			ttt.style.cssText=position[direction];
+			setTimeout(function(){
+				ttt.style.cssText="left:0px;top:0px;transition:all ease 0.4s";
+			},1);
+		}
+		box1[i].onmouseleave=function(e){
+			var w=this.offsetWidth;
+			var h=this.offsetHeight;
+			var x=(e.pageX-this.offsetLeft-(w/2))*(w>h?(h/w):1);    
+			var y=(e.pageY-this.offsetTop-(h/2))*(h>w?(w/h):1);   
+			var direction=Math.round((((Math.atan2(y,x)*(180/Math.PI))+180)/90)+3)%4;
+			var position=["left:0px;top:-100px;transition:all ease 0.4s","left:100px;top:0px;transition:all ease 0.4s","left:0px;top:100px;transition:all ease 0.4s","left:-100px;top:0px;transition:all ease 0.4s"]; 
+			var ttt=this.getElementsByClassName('box2')[0];
+			ttt.style.cssText="left:0px;top:0px;";
+			setTimeout(function(){
+				ttt.style.cssText=position[direction];
+			},1);
+		}	
+		}
+}	
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人简历</title>
+	<link rel="stylesheet" href="fullpage.css">
+</head>
+<body>
+	<div id="fullpage">
+		<div class="section"><h1>这是标题一</h1></div>
+		<div class="section">
+			<div class="slide">slider1</div>
+			<div class="slide">slider2</div>
+			<div class="slide">slider3</div>
+			<div class="slide">slider4</div>
+		</div>
+		<div class="section"><h1>这是标题三</h1></div>
+		<div class="section"><h1>这是标题四</h1></div>
+	</div>
+<script src="jquery-1.7.2.min.js"></script>
+<script src="fullpage.js"></script>
+<script>
+	$(function(){
+		$("#fullpage").fullpage({
+			sectionsColor:['blue','gold','red','green'],
+			anchors:['page1','page2','page3','page4'],
+			loopBottom: true,
+			// loopBottom:true;
+			navigation:true,
+			navigationPosition:'right',
+			navigationTooltips:['第一屏','第二屏','第三屏','第四屏'],
+		});
+	})
+</script>
+</body>
+</html>

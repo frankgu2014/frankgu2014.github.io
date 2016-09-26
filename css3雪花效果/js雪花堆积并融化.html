@@ -1,0 +1,198 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>snowflake</title>
+    <script type="text/javascript" src="http://w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+            font-size: 14px;
+            color: #BCBCBC;
+        }
+        input {
+            border: solid 0px #DDD;
+            border-radius: 5px;
+            padding: 5px 10px;
+            width: 120px;
+        }
+        button {
+            border: solid 0px #CCC;
+            border-radius: 5px;
+            background-color: #FFF;
+            padding: 5px 10px;
+        }
+        #sky {
+            width: 100%;
+            max-width: 640px;
+            height: 100%;
+            background-color: #A39;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .snowflake {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 10px;
+            left: 100px;
+            display: inline-block;
+            transition: top 2s;
+            -moz-transition: top 2s;/* Firefox 4 */
+            -webkit-transition: top 2s;/* Safari 和 Chrome */
+            -o-transition: top 2s;
+            transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+            -moz-transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+            -webkit-transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+            -o-transition-timing-function: cubic-bezier(0.25,0.1,0.25,1);
+        }
+        #operate {
+            text-align: right;
+        }
+        #operate div {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sky"></div>
+    <div id="operate">
+        <div>
+            <label>下雪频率(ms): <input name="rate" type="number" min="1" /></label>
+        </div>
+        <div>
+            <label>融化时间(ms): <input name="melt" type="number" min="0" /></label>
+        </div>
+        <div>
+            <button id="start-or-stop" onclick="startOrStop()">start</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var $sky = $('#sky');
+    var maxTop = $sky.height() - 5;// 地面高度值(px)
+    var rate = 60;// 飘落频率(ms)
+    var flakeSize = 10;// 单片雪花宽高值(px)
+    var melt = 2000;// 融化时间(ms)
+ 
+    // 初始化雪花
+    function snowflake(size, alpha, top, left) {
+        var s = document.createElement('div');
+        $(s).css({
+            'width': size,
+            'height': size,
+            'border-radius': size,
+            'background-color': 'rgba(255,255,255,' + alpha + ')',
+            'top': -50,
+            'left': left,
+        }).addClass('snowflake');
+        return s;
+    }
+ 
+    // 雪花飘落并融化
+    function dift($s) {
+        $s.css('top', maxTop + (flakeSize - $s.width()) / 2);
+ 
+        setTimeout(function() {
+            $s.remove();
+        }, 2000 + melt);
+    }
+ 
+    // 开始动画
+    var animateId = -1;
+    var it = false;
+    function start() {
+        if(!it) {
+            it = setInterval(function() {
+                // 初始化雪花
+                var id = 's_' + (++animateId);
+                var size = Math.random() * flakeSize + 2;
+                var alpha = Math.random() * 0.7 + 0.1;
+                var left = Math.random() * $(window).width();
+                var s = snowflake(size, alpha, 0, left);
+                var $s = $(s).attr('id', id);
+                $sky.get(0).appendChild(s);
+ 
+                // 雪花飘落
+                setTimeout(function() {
+                    dift($s);
+                }, 100);
+ 
+                if(animateId > 10000) {// 避免越界
+                    animateId = 0;
+                }
+            }, rate);
+            $('#start-or-stop').html('stop');
+        }
+    }
+    start();
+ 
+    // 停止动画
+    function stop() {
+        clearInterval(it);
+        it = false;
+        $('#start-or-stop').html('start');
+    }
+ 
+    // 开始或暂停动画
+    function startOrStop() {
+        if(!it) {
+            start();
+        } else {
+            stop();
+        }
+    }
+ 
+    // 重启动画
+    function restart() {
+        stop();
+        start();
+    }
+ 
+    $(function() {
+        // 监听rate输入框
+        var minRate = 1, maxRate = 3000;
+        $('input[name="rate"]').val(rate).on('change', function() {
+            rate = parseInt($(this).val());
+            if(rate < minRate) {
+                rate = minRate;
+                $(this).val(rate);
+            } else if(rate > maxRate) {
+                rate = maxRate;
+                $(this).val(rate);
+            }
+ 
+            restart();
+        }).prop({
+            min: minRate,
+            max: maxRate
+        });
+ 
+        // 监听melt输入框
+        var minMalt = 0, maxMelt = 100000;
+        $('input[name="melt"]').val(melt).on('change', function() {
+            melt = parseInt($(this).val());
+            if(melt < minMalt) {
+                melt = minMalt;
+                $(this).val(melt);
+            } else if(melt > maxMelt) {
+                melt = maxMelt;
+                $(this).val(melt);
+            }
+ 
+            restart();
+        }).prop({
+            min: minMalt,
+            max: maxMelt
+        });
+    });
+    </script>
+</body>
+</html>

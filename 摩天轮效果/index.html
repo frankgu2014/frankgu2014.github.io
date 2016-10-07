@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>CSS3实现游乐场摩天轮旋转动画特效</title>
+
+<style>
+div.container{
+	margin: 100px auto;
+	width: 800px;
+	position: relative;
+	-webkit-animation: rotate 10s infinite linear;
+	-o-animation: rotate 10s infinite linear;
+	animation: rotate 10s infinite linear;
+}
+@keyframes rotate{
+	0%{
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+	}
+}
+img:nth-child(2){
+	position: absolute;
+	top: 80px;
+	left: 400px;
+	animation: re-rotate 10s infinite linear;
+	-webkit-animation: re-rotate 10s infinite linear;
+	-moz-animation: re-rotate 10s infinite linear;
+	transform-origin:top center;
+	-webkit-transform-origin:top center;
+	-moz-transform-origin:top center;
+}
+img:nth-child(3){
+	position: absolute;
+	top: 700px;
+	left: 400px;
+	animation: re-rotate 10s infinite linear;
+	-webkit-animation: re-rotate 10s infinite linear;
+	-moz-animation: re-rotate 10s infinite linear;	
+	transform-origin:top center;
+	-webkit-transform-origin:top center;
+	-moz-transform-origin:top center;
+}
+img:nth-child(4){
+	position: absolute;
+	top: 300px;
+	left: 0px;
+	animation: re-rotate 10s infinite linear;
+	-webkit-animation: re-rotate 10s infinite linear;
+	-moz-animation: re-rotate 10s infinite linear;
+	transform-origin:top center;
+	-webkit-transform-origin:top center;
+	-moz-transform-origin:top center;
+}
+@keyframes re-rotate{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(-360deg);
+	}
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+	<img src="images/background.png">
+	<img src="images/person1.png">
+	<img src="images/person2.png">
+	<img src="images/person3.png">
+</div>
+
+</body>
+</html>
